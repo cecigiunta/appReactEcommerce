@@ -18,25 +18,22 @@ function DetalleProducto(){
             try {
                 const document = await firebase.db.doc("productos/" + idproducto)
                 .get()
-
                 if (document){
                     setProducto (document.data())
                     setLoading (false)
                 }
-            }
-             catch(e) {
-                 console.log (e.code)}
-             }
+            } catch(e) {
+                 console.log (e.code)
+            }}
                  request()
             },
                  [idproducto]
     )    
    if(loading){
         return (
-        <div> <Loading/></div>
+        <div> <Loading/> </div>
     )
-        }
-else{
+    }else{
     return (
         <Loading loading={loading}>
         <Card  style={{ 
@@ -49,13 +46,10 @@ else{
         <Card.Text>Descripción: {producto.descripcion}</Card.Text>   
         <Card.Text>SKU: {idproducto}</Card.Text>   
         </Card.Body>
-
       </Card>
-
         <Button variant="dark" as={Link} to={'/carrito'}> Agregar al carrito </Button>
         <Button variant="primary" as={Link} to={'/'}> Continuar comprando </Button>
       </Loading>
     );
-}
-}
-export default DetalleProducto
+}}
+export default DetalleProducto;
